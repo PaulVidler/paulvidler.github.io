@@ -1,0 +1,5 @@
+- Header/ footer includes
+- Cheat sheets - Add azure, jquery, whatever else from work. Other stuff you've stored over the internet
+- blogs
+- projects page
+- image carousel
