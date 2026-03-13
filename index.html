@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cyber-Securiosity | Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .hero-card {
+            grid-column: span 3;
+            height: 400px;
+            background: url('images/miso_ciso_web.png') center/cover;
+            display: flex;
+            align-items: flex-end;
+            padding: 40px;
+        }
+        .stat-value { font-size: 2rem; color: #fff; }
+        .critical { color: #ff4d4d; }
+        .network-security-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .cert-list, .skill-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .status {
+            font-weight: bold;
+        }
+        .in-progress { color: orange; }
+        .planned { color: gray; }
+        .active { color: green; }
+        .indicator {
+            font-size: 1.2rem;
+        }
+        .green { color: green; }
+        .yellow { color: orange; }
+        .red { color: red; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">⚡ CYBER-SECURIOSITY</div>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <div class="container dashboard-grid">
+        <div class="card hero-card">
+            <div style="background: rgba(0,0,0,0.6); padding: 20px; border-left: 4px solid var(--accent-cyan);">
+                <h2 style="margin:0">MISO SYSTEM ONLINE</h2>
+                <p style="color: var(--accent-cyan); margin: 5px 0 0 0;">CISO | Threat Intelligence Specialist</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-title">Network Security Overview</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; font-size: 0.8rem;">
+                <div>
+                    <div style="font-weight: 600; margin-bottom: 6px;">Certification Status</div>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li>SC-900 – <span style="color: #4ade80;">In Progress</span></li>
+                        <li>Security+ – <span style="color: #38bdf8;">Planned</span></li>
+                        <li>Cybersecurity Graduate Certificate – <span style="color: #a7f3d0;">Active</span></li>
+                        <li style="font-weight: 600; margin-bottom: 6px;">Skill Health Indicators</li>
+                        <li>Application Security: <span style="color: #4ade80;">🟢</span></li>
+                        <li>Cloud Security: <span style="color: #facc15;">🟡</span></li>
+                        <li>Threat Detection: <span style="color: #facc15;">🟡</span></li>
+                        <li>Reverse Engineering: <span style="color: #ff4d4d;">🔴</span></li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">System Health</div>
+            <div class="stat-value">98.2%</div>
+            <p style="font-size: 0.8rem; color: #4ade80;">STATUS: OPTIMAL</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Active Threats</div>
+            <div class="stat-value critical">3</div>
+            <p style="font-size: 0.8rem; color: #ff4d4d;">SEVERITY: HIGH</p>
+        </div>
+    </div>
+</body>
+</html>

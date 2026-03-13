@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cyber-Securiosity | Projects</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .tag {
+            font-size: 0.7rem;
+            background: rgba(0, 242, 255, 0.1);
+            color: var(--accent-cyan);
+            padding: 2px 8px;
+            border-radius: 2px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">⚡ CYBER-SECURIOSITY</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="projects.html" class="active">Projects</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 class="page-title">PROJECT_LOGS</h1>
+        <div class="projects-grid">
+            <div class="card">
+                <div class="card-title">Network Pentest Tool</div>
+                <p style="font-size: 0.85rem; color: var(--text-dim);">Automated vulnerability scanner for home-lab IoT devices.</p>
+                <div style="margin-top: 15px;">
+                    <span class="tag">#Python</span><span class="tag">#Pentest</span><span class="tag">#IDS</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">CVE-2023 Analysis</div>
+                <p style="font-size: 0.85rem; color: var(--text-dim);">Deep dive into memory injection vulnerabilities.</p>
+                <div style="margin-top: 15px;">
+                    <span class="tag">#Research</span><span class="tag">#Security</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
