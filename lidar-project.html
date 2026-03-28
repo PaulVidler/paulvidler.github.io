@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How I Accidentally Built a National Data Platform | CYBER-seCURIOSITY</title>
+    <meta name="description" content="A true story of building a national LiDAR data platform, automating a job, open-sourcing the solution, and the unexpected aftermath. Lessons in software, data, and career pivots.">
+    <meta name="keywords" content="LiDAR, photogrammetry, data platform, automation, open source, Python, C#, .NET, Azure, career, software development, story, mapping, database, web development, lessons learned">
+    <link rel="icon" type="image/x-icon" href="images/miso_ciso.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/miso-square-web.png" alt="Logo" class="logo-img">
+            CYBER-seCURIOSITY
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="projects.html" class="active">Projects</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="card page-hero">
+            <h1>My first real software project: LiDAR/Photogrammetry flight logging</h1>
+            <p>Arounnd 2017. I decided to teach myself to build software and built a custom solution for logging and processing LiDAR and photogrammetry data for fixed wing aircraft flights.</p>
+            </br>
+            <a class="button-link" href="projects.html">← Back to Projects</a>
+        </section>
+
+        <section class="project-template-layout">
+            <article class="card project-detail-block">
+                <img class="project-thumb" src="images/miso-pilot-landscape-web.png" alt="LiDAR flight logging image">
+                <h2>How I Accidentally Built a potenially very successful SAAS Platform in my free time (After Automating My Job)</h2>
+                <p>There’s a special kind of boredom that hits when you automate most of your own job and then still have to show up. That’s roughly where this story begins.</p>
+                <p>In a previous life, I was a registered land surveyor and due to some unfortunate knee injuries, I decided to take an office based surveying role for an aerial surveying and photogrammetry company. At the time, my “programming experience” consisted of a 20 year old web development diploma I hadn't touched since 2002, some extremely shitty Python scripts and just enough confidence to be dangerous. I definitely didn’t know what an API was. I didn't know what the hell I didn’t know, which, as it turns out, was a lot.</p>
+                <div style="text-align:center; margin:2em 0;">
+                    <img src="images/flightlines.png" alt="LiDAR flightlines example" style="max-width:700px; width:100%; border-radius:8px; box-shadow:0 2px 8px #0002;">
+                    <span style="display:block; text-align:center; font-size:0.95em; color:#666; margin-top:0.5em;">(redacted) metadata and spatial information overlaid on a Leaflet map</span>
+                </div>
+                <p>I had this brilliant (read: wildly naive) idea: Take raw LiDAR and photogrammetry data for an aerial survey company, convert it into a useable format to display relevant information, and display them on a web map with some filtering. Days, flight conditions, spatial metadata, aircraft information, sensors, simple stuff......? Basically just “a bit of text parsing and a small database displayed on Leaflet.”</p>
+                <p>Easy, right? …right?</p>
+                <p>What followed was my first real collision with reality in software development. Suddenly I was dealing with web interfaces, mapping libraries, data structures, performance issues, and an endless stream of “why doesn’t this work?” moments at 11pm. This was all before the automation process of uploading these flights automatically into an Azure function. I didn't even know what Azure was at this point, give me a break, it's been a very long 10 years or so....</p>
+                <p>Somewhere along the way, a colleague colloquially known to me as “Mad Dog” gently (j/k, gentle wasn't ever his style) suggested that maybe Python wasn’t the best tool for what I was trying to build, and guided me into learning his world, at which he is a genuis: C# and the .NET ecosystem... all while still building the project.</p>
+                <p>No big deal.</p>
+                <p>What started as a boredom project turned into something far bigger. I worked late into the night, literally pulling out archived dusty old hard drives from cardboard boxes in their storage shed so I could process it through my parsing software to the shape I needed for the database. The company I worked for had a massive amount of unclassified LiDAR data scattered everywhere, with no real way to track coverage or reuse it. If a new flight was needed, there was almost no way to know if that area had already been captured. </p>
+                <p>This tool changed that overnight.</p>
+                <div style="text-align:center; margin:2em 0;">
+                    <img src="images/flightlines3.png" alt="LiDAR flightlines alternate view" style="max-width:700px; width:100%; border-radius:8px; box-shadow:0 2px 8px #0002;">
+                </div>
+                <p>Suddenly, teams across the country could see exactly where data existed, how recent it was, and whether it could be reused or sold. Processing, sales, marketing, it touched everything. I started getting calls from people I’d never met to ask for new features or offering to buy me beer at the next Xmas party, and even international interest popped up.</p>
+                <p>For the first time, they could catalogue, display and correalte their data and visualise it. As you could imagine, this was massive for the sales team.</p>
+                <p>And the best part?</p>
+                <p>I built the whole thing in my own time… and open-sourced it.</p>
+                <p>Which is where it gets weird and made the next part... ummm... interesting.</p>
+                <p>When management realised what had been created, I was asked if I wanted to sell it. I explained (multiple times) that I’d already given it to them and posted the code to their GitHub under an open license. MIT I think, I dont quite remember. After being approached multiple times to sell it, I just said "hey, I've been working real hard to be a developer, maybe you might have a job for me since this at a bare minmum will require maintaining, and I've essentially automated myself out of the other work I was hired to do"</p>
+                <p>For some reason, this was seen by HR as some kind of front, and then somehow led to a conversation about legal action and me being sued. I'm still not sure why, lol.</p>
+                <p>Once HR got involved, they connived management to remoce the site immediately, so i did. this lead to phonecalls within minutes from people all over the country who were now relying on this site to do there jobs. It was a weird decision and things got awkward.</p>
+                <p>So I quit.</p>
+                <p>After I left, a friend of mine said they'd paid two senior contractors to redo the application exactly as I had, and that the project took them over 2 months. Now, I'm not saying that's how good I was at software back then, my code was total dog shit, and it took me a really long time and it solved a very relevant problems for the business, but I still laugh at the cost they paid and how I was told that no one else was willing to dig into that old storage facility to pull out that old data like I was willing to at 10pm ona Friday night. So the newer application was still missing 10 years of archived data last I heard.</p>
+                <p>Honestly, I don’t regret any of it.</p>
+                <p>That project taught me more than any course ever could. It was messy, confusing and stressful, but it was the moment I stopped “dabbling” and started actually building software to solve problems.</p>
+                <p>With started with boredom… and a wildly underestimated “simple” idea almost ended in legal action, for what, I'm still not even sure, lol.</p>
+                <p>Shout out to Mad-dog. He's still a friend and a mentor I look up to, even if he's a few years younger than me and totally nuts.</p>
+            </article>
+
+            <aside class="card project-detail-block">
+                <h2>Project Metadata</h2>
+                <ul class="project-meta-list">
+                    <li><strong>Role:</strong> Registered land surveyor / Automation Engineer</li>
+                    <li><strong>Type:</strong> Internal Data Platform, Open Source</li>
+                    <li><strong>Stack:</strong> Python, C#, .NET, Azure, Leaflet, SQL</li>
+                    <li><strong>Focus:</strong> LiDAR & Photogrammetry Processing, Data Visualization, Automation</li>
+                    <li><strong>Status:</strong> Deployed, Open Sourced, Retired</li>
+                </ul>
+
+                <h2>Timeline</h2>
+                <ul class="timeline">
+                    <li>Idea & Automation: Automated legacy workflows, parsed and indexed years of flight, LiDAR and photogrammetry data</li>
+                    <li>Platform Build: Developed web mapping and data visualization tools</li>
+                    <li>Legal action threatened over open sourced material</li>
+                    <li>Open Source & Handover: Released code, transitioned project, and exited company</li>
+                </ul>
+
+                <h2>Key Skills Demonstrated</h2>
+                <div class="chip-row">
+                    <span class="chip">Automation</span>
+                    <span class="chip">Data Processing</span>
+                    <span class="chip">Web Mapping</span>
+                    <span class="chip">.NET & Azure</span>
+                    <span class="chip">Legal threats</span>
+                    <span class="chip">Problem Solving</span>
+                </div>
+            </aside>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p class="footer-note">© 2026 | If you found this page by accident, that still counts as recon.</p>
+        <a class="social-link" href="https://www.linkedin.com/in/paul-cyber/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M8.34 17V10.67H6.26V17H8.34M7.3 9.79A1.2 1.2 0 1 0 7.3 7.39A1.2 1.2 0 0 0 7.3 9.79M17.74 17V13.56C17.74 11.73 16.76 10.46 14.87 10.46C13.96 10.46 13.35 10.96 13.1 11.44V10.67H11.11V17H13.2V13.86C13.2 13.03 13.36 12.23 14.39 12.23C15.41 12.23 15.43 13.18 15.43 13.91V17H17.74Z" />
+            </svg>
+            LinkedIn
+        </a>
+    </footer>
+</body>
+</html>

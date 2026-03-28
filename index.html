@@ -2,50 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Cyber-Securiosity | Dashboard</title>
+    <title>CYBER-seCURIOSITY</title>
+    <link rel="icon" type="image/x-icon" href="images/miso_ciso.ico">
     <link rel="stylesheet" href="style.css">
-    <style>
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-        .hero-card {
-            grid-column: span 3;
-            height: 400px;
-            background: url('images/miso_ciso_web.png') center/cover;
-            display: flex;
-            align-items: flex-end;
-            padding: 40px;
-        }
-        .stat-value { font-size: 2rem; color: #fff; }
-        .critical { color: #ff4d4d; }
-        .network-security-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        .cert-list, .skill-list {
-            list-style-type: none;
-            padding: 0;
-        }
-        .status {
-            font-weight: bold;
-        }
-        .in-progress { color: orange; }
-        .planned { color: gray; }
-        .active { color: green; }
-        .indicator {
-            font-size: 1.2rem;
-        }
-        .green { color: green; }
-        .yellow { color: orange; }
-        .red { color: red; }
-    </style>
 </head>
 <body>
+    <svg class="svg-defs" aria-hidden="true" focusable="false">
+        <defs>
+            <linearGradient id="socGaugeGradientSystem" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#ff4d4d"></stop>
+                <stop offset="32%" stop-color="#ff4d4d"></stop>
+                <stop offset="50%" stop-color="#facc15"></stop>
+                <stop offset="68%" stop-color="#4ade80"></stop>
+                <stop offset="100%" stop-color="#4ade80"></stop>
+            </linearGradient>
+            <linearGradient id="socGaugeGradientThreat" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#4ade80"></stop>
+                <stop offset="32%" stop-color="#4ade80"></stop>
+                <stop offset="50%" stop-color="#facc15"></stop>
+                <stop offset="68%" stop-color="#ff4d4d"></stop>
+                <stop offset="100%" stop-color="#ff4d4d"></stop>
+            </linearGradient>
+        </defs>
+    </svg>
+
     <header>
-        <div class="logo">⚡ CYBER-SECURIOSITY</div>
+        <div class="logo">
+            <img src="images/miso-square-web.png" alt="Logo" class="logo-img">
+            CYBER-seCURIOSITY
+        </div>
         <nav>
             <a href="index.html" class="active">Home</a>
             <a href="projects.html">Projects</a>
@@ -55,42 +40,285 @@
 
     <div class="container dashboard-grid">
         <div class="card hero-card">
-            <div style="background: rgba(0,0,0,0.6); padding: 20px; border-left: 4px solid var(--accent-cyan);">
-                <h2 style="margin:0">MISO SYSTEM ONLINE</h2>
-                <p style="color: var(--accent-cyan); margin: 5px 0 0 0;">CISO | Threat Intelligence Specialist</p>
+            <div class="hero-overlay">
+                <h2 class="hero-title">CYBER-seCURIOSITY</h2>
+                <p class="hero-subtitle">Build It | Break It | Secure It</p>
             </div>
         </div>
-        <div class="card">
-            <div class="card-title">Network Security Overview</div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; font-size: 0.8rem;">
-                <div>
-                    <div style="font-weight: 600; margin-bottom: 6px;">Certification Status</div>
-                    <ul style="list-style: none; padding: 0; margin: 0;">
-                        <li>SC-900 – <span style="color: #4ade80;">In Progress</span></li>
-                        <li>Security+ – <span style="color: #38bdf8;">Planned</span></li>
-                        <li>Cybersecurity Graduate Certificate – <span style="color: #a7f3d0;">Active</span></li>
-                        <li style="font-weight: 600; margin-bottom: 6px;">Skill Health Indicators</li>
-                        <li>Application Security: <span style="color: #4ade80;">🟢</span></li>
-                        <li>Cloud Security: <span style="color: #facc15;">🟡</span></li>
-                        <li>Threat Detection: <span style="color: #facc15;">🟡</span></li>
-                        <li>Reverse Engineering: <span style="color: #ff4d4d;">🔴</span></li>
-                    </ul>
+        <div class="sidebar-stack">
+            <div class="card panel-card">
+                <div class="card-title">Certification Status</div>
+                <div class="compact-body">
+                    <div class="health-bar-container">
+                        <span>Azure AZ-900:</span>
+                        <div class="health-bar">
+                            <span class="health-bar-square red"></span>
+                            <span class="health-bar-square orange"></span>
+                            <span class="health-bar-square yellow"></span>
+                            <span class="health-bar-square lightgreen"></span>
+                            <span class="health-bar-square green"></span>
+                            <span class="health-bar-square darkgreen"></span>
+                        </div>
+                    </div>
+                    <div class="health-bar-container">
+                        <span>Azure Security SC-900:</span>
+                        <div class="health-bar">
+                            <span class="health-bar-square red"></span>
+                            <span class="health-bar-square orange"></span>
+                            <span class="health-bar-square yellow"></span>
+                            <span class="health-bar-square lightgreen"></span>
+                            <span class="health-bar-square green"></span>
+                            <span class="health-bar-square darkgreen"></span>
+                        </div>
+                    </div>
+                    <div class="health-bar-container">
+                        <span>Cybersecurity Post-Grad:</span>
+                        <div class="health-bar">
+                            <span class="health-bar-square red"></span>
+                            <span class="health-bar-square orange"></span>
+                            <span class="health-bar-square yellow"></span>
+                            <span class="health-bar-square lightgreen"></span>
+                            <span class="health-bar-square green flashing"></span>
+                            <span class="health-bar-square off"></span>
+                        </div>
+                    </div>
+                    <div class="health-bar-container">
+                        <span>Fortinet fundamentals:</span>
+                        <div class="health-bar">
+                            <span class="health-bar-square red"></span>
+                            <span class="health-bar-square orange"></span>
+                            <span class="health-bar-square yellow"></span>
+                            <span class="health-bar-square lightgreen"></span>
+                            <span class="health-bar-square green"></span>
+                            <span class="health-bar-square darkgreen"></span>
+                        </div>
+                    </div>
                 </div>
-                
+            </div>
+            <div class="card panel-card">
+                <div class="card-title">Skill Health Indicators</div>
+                <div class="compact-body">
+                    <div class="health-bar-container">
+                        <span>Application Security:</span>
+                        <div class="health-bar">
+                            <span class="health-bar-circle red"></span>
+                            <span class="health-bar-circle orange"></span>
+                            <span class="health-bar-circle yellow"></span>
+                            <span class="health-bar-circle lightgreen"></span>
+                            <span class="health-bar-circle green flashing"></span>
+                            <span class="health-bar-circle"></span>
+                        </div>
+                    </div>
+                    <div class="health-bar-container">
+                        <span>Cloud Security:</span>
+                        <div class="health-bar">
+                            <span class="health-bar-circle red"></span>
+                            <span class="health-bar-circle orange"></span>
+                            <span class="health-bar-circle yellow"></span>
+                            <span class="health-bar-circle lightgreen flashing"></span>
+                            <span class="health-bar-circle"></span>
+                            <span class="health-bar-circle"></span>
+                        </div>
+                    </div>
+                    <div class="health-bar-container">
+                        <span>Threat Detection:</span>
+                        <div class="health-bar">
+                            <span class="health-bar-circle red"></span>
+                            <span class="health-bar-circle orange"></span>
+                            <span class="health-bar-circle yellow"></span>
+                            <span class="health-bar-circle lightgreen"></span>
+                            <span class="health-bar-circle green flashing"></span>
+                            <span class="health-bar-circle"></span>
+                        </div>
+                    </div>
+                    <div class="health-bar-container">
+                        <span>Reverse Engineering:</span>
+                        <div class="health-bar">
+                            <span class="health-bar-circle red"></span>
+                            <span class="health-bar-circle orange flashing"></span>
+                            <span class="health-bar-circle"></span>
+                            <span class="health-bar-circle"></span>
+                            <span class="health-bar-circle"></span>
+                            <span class="health-bar-circle"></span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="card">
+        <div class="card panel-card system-health-card">
             <div class="card-title">System Health</div>
-            <div class="stat-value">98.2%</div>
-            <p style="font-size: 0.8rem; color: #4ade80;">STATUS: OPTIMAL</p>
+            <div class="soc-gauge-grid">
+                <div class="soc-gauge" data-value="90">
+                    <svg class="soc-gauge-svg" viewBox="0 0 120 120" aria-hidden="true">
+                        <circle class="soc-gauge-track" cx="60" cy="60" r="46"></circle>
+                        <circle class="soc-gauge-arc" cx="60" cy="60" r="46"></circle>
+                    </svg>
+                    <span class="soc-gauge-value">90%</span>
+                    <span class="soc-gauge-label">.NET</span>
+                </div>
+                <div class="soc-gauge" data-value="65">
+                    <svg class="soc-gauge-svg" viewBox="0 0 120 120" aria-hidden="true">
+                        <circle class="soc-gauge-track" cx="60" cy="60" r="46"></circle>
+                        <circle class="soc-gauge-arc" cx="60" cy="60" r="46"></circle>
+                    </svg>
+                    <span class="soc-gauge-value">65%</span>
+                    <span class="soc-gauge-label">Azure</span>
+                </div>
+                <div class="soc-gauge" data-value="85">
+                    <svg class="soc-gauge-svg" viewBox="0 0 120 120" aria-hidden="true">
+                        <circle class="soc-gauge-track" cx="60" cy="60" r="46"></circle>
+                        <circle class="soc-gauge-arc" cx="60" cy="60" r="46"></circle>
+                    </svg>
+                    <span class="soc-gauge-value">85%</span>
+                    <span class="soc-gauge-label">Net-Sec</span>
+                </div>
+                <div class="soc-gauge" data-value="100">
+                    <svg class="soc-gauge-svg" viewBox="0 0 120 120" aria-hidden="true">
+                        <circle class="soc-gauge-track" cx="60" cy="60" r="46"></circle>
+                        <circle class="soc-gauge-arc" cx="60" cy="60" r="46"></circle>
+                    </svg>
+                    <span class="soc-gauge-value">100%</span>
+                    <span class="soc-gauge-label">Tenacity</span>
+                </div>
+            </div>
+            <p class="score-line">Secure Score: 8.5</p>
         </div>
 
-        <div class="card">
+        <div class="card panel-card active-threats-card">
             <div class="card-title">Active Threats</div>
-            <div class="stat-value critical">3</div>
-            <p style="font-size: 0.8rem; color: #ff4d4d;">SEVERITY: HIGH</p>
+            <div class="soc-gauge-grid">
+                <div class="soc-gauge" data-value="45">
+                    <svg class="soc-gauge-svg" viewBox="0 0 120 120" aria-hidden="true">
+                        <circle class="soc-gauge-track" cx="60" cy="60" r="46"></circle>
+                        <circle class="soc-gauge-arc" cx="60" cy="60" r="46"></circle>
+                    </svg>
+                    <span class="soc-gauge-value">45%</span>
+                    <span class="soc-gauge-label">Guitar</span>
+                </div>
+                <div class="soc-gauge" data-value="95">
+                    <svg class="soc-gauge-svg" viewBox="0 0 120 120" aria-hidden="true">
+                        <circle class="soc-gauge-track" cx="60" cy="60" r="46"></circle>
+                        <circle class="soc-gauge-arc" cx="60" cy="60" r="46"></circle>
+                    </svg>
+                    <span class="soc-gauge-value">95%</span>
+                    <span class="soc-gauge-label">Bad Jokes</span>
+                </div>
+                <div class="soc-gauge" data-value="60">
+                    <svg class="soc-gauge-svg" viewBox="0 0 120 120" aria-hidden="true">
+                        <circle class="soc-gauge-track" cx="60" cy="60" r="46"></circle>
+                        <circle class="soc-gauge-arc" cx="60" cy="60" r="46"></circle>
+                    </svg>
+                    <span class="soc-gauge-value">60%</span>
+                    <span class="soc-gauge-label">Dirt Bike</span>
+                </div>
+                <div class="soc-gauge" data-value="40">
+                    <svg class="soc-gauge-svg" viewBox="0 0 120 120" aria-hidden="true">
+                        <circle class="soc-gauge-track" cx="60" cy="60" r="46"></circle>
+                        <circle class="soc-gauge-arc" cx="60" cy="60" r="46"></circle>
+                    </svg>
+                    <span class="soc-gauge-value">40%</span>
+                    <span class="soc-gauge-label">BJJ</span>
+                </div>
+            </div>
+            <p class="score-line">Compliance Score: 9.3</p>
         </div>
     </div>
+
+    <footer class="site-footer">
+        <p class="footer-note">© 2026 | Legally this is probably copyrighted, emotionally it belongs to whoever wants it.</p>
+        <a class="social-link" href="https://www.linkedin.com/in/paul-cyber/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M8.34 17V10.67H6.26V17H8.34M7.3 9.79A1.2 1.2 0 1 0 7.3 7.39A1.2 1.2 0 0 0 7.3 9.79M17.74 17V13.56C17.74 11.73 16.76 10.46 14.87 10.46C13.96 10.46 13.35 10.96 13.1 11.44V10.67H11.11V17H13.2V13.86C13.2 13.03 13.36 12.23 14.39 12.23C15.41 12.23 15.43 13.18 15.43 13.91V17H17.74Z" />
+            </svg>
+            LinkedIn
+        </a>
+    </footer>
+
+    <div class="ctf-toast" id="ctfToast">Challenge unlocked: redirecting to hidden lab...</div>
+    <div class="ctf-hint-overlay" id="ctfHintOverlay">CTF??</div>
+
+    <script>
+        (() => {
+            const ARC_RATIO = 0.75;
+            const CIRCLE_RADIUS = 46;
+            const CIRCUMFERENCE = 2 * Math.PI * CIRCLE_RADIUS;
+            const ARC_LENGTH = CIRCUMFERENCE * ARC_RATIO;
+
+            document.querySelectorAll('.soc-gauge').forEach((gauge) => {
+                const value = Number(gauge.dataset.value || 0);
+                const normalized = Math.max(0, Math.min(100, value));
+                const arc = gauge.querySelector('.soc-gauge-arc');
+                const valueText = gauge.querySelector('.soc-gauge-value');
+
+                if (arc) {
+                    arc.style.strokeDasharray = `${ARC_LENGTH} ${CIRCUMFERENCE}`;
+                    arc.style.strokeDashoffset = `${ARC_LENGTH * (1 - normalized / 100)}`;
+                }
+
+                if (valueText) {
+                    valueText.textContent = `${normalized}%`;
+                }
+            });
+
+            const toast = document.getElementById('ctfToast');
+            const hintOverlay = document.getElementById('ctfHintOverlay');
+            const logo = document.querySelector('.logo');
+            let sequence = '';
+            let clickCount = 0;
+            let clickTimer;
+
+            if (hintOverlay) {
+                setTimeout(() => {
+                    hintOverlay.classList.add('show');
+                }, 140);
+
+                setTimeout(() => {
+                    hintOverlay.classList.remove('show');
+                    hintOverlay.classList.add('hide');
+                }, 3000);
+
+                setTimeout(() => {
+                    hintOverlay.remove();
+                }, 3400);
+            }
+
+            const triggerSecret = () => {
+                if (toast) {
+                    toast.classList.add('show');
+                }
+
+                setTimeout(() => {
+                    window.location.href = 'threat-lab.html';
+                }, 900);
+            };
+
+            document.addEventListener('keydown', (event) => {
+                sequence = (sequence + event.key.toLowerCase()).slice(-3);
+
+                if (sequence === 'ctf') {
+                    triggerSecret();
+                    sequence = '';
+                }
+            });
+
+            if (logo) {
+                logo.addEventListener('click', () => {
+                    clearTimeout(clickTimer);
+                    clickCount += 1;
+
+                    if (clickCount >= 5) {
+                        triggerSecret();
+                        clickCount = 0;
+                        return;
+                    }
+
+                    clickTimer = setTimeout(() => {
+                        clickCount = 0;
+                    }, 1400);
+                });
+            }
+        })();
+    </script>
 </body>
 </html>
