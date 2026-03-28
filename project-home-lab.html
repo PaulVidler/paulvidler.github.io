@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Lab | CYBER-seCURIOSITY</title>
+    <link rel="icon" type="image/x-icon" href="images/miso_ciso.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/miso-square-web.png" alt="Logo" class="logo-img">
+            CYBER-seCURIOSITY
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="projects.html" class="active">Projects</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="card page-hero">
+            <h1>Home networking lab and learnings</h1>
+            <p>Network segmentation. Stripping down the OSI model, inspecting traffic, diagnosing problems, defining what's 'normal'</p></br>
+            <a class="button-link" href="projects.html">← Back to Projects</a>
+        </section>
+
+        <section class="project-template-layout">
+            <article class="card project-detail-block">
+                <img class="project-thumb" src="images/miso-network-large-web.png" alt="Home lab network image">
+                <h2>Home Networking Labs and proving the OSI model isn't tech-fluff</h2>
+                <p>Over the past year, I’ve moved beyond just reading and listening to cybersecurity content, I’ve been building, breaking, and learning by doing. My journey started with simple questions about how routers work, but quickly escalated into building home lab setups, experimenting with traffic, routing, and segmentation to make abstract concepts real.</p>
+                <p>One breakthrough was using my laptop as a software router, manually adding routes and watching traffic flow between subnets. That “aha” moment when a ping finally works after setting up the right route made the OSI model click for me. Now, a failed ping isn’t just a dead end: “network unreachable” means a Layer 3 issue, “host not found” is a name resolution problem, and a silent ping points to firewalls or filtering. The OSI model became a map for troubleshooting, making the process logical instead of random.</p>
+                <p>Applying this at home, I started segmenting my network—isolating smart devices like TVs and robo-vacs I don’t fully trust. Subnets and firewall rules gave me real control over what talks to what, making even a basic home setup feel like a “real” network.</p>
+                <p>Packet analysis became a regular activity. Using CLI tools and Wireshark, I learned to spot ARP broadcasts, open ports, and ICMP messages. Watching ARP requests in real time connected the dots between IP addresses and hardware, and seeing ICMP errors after a failed ping tied the layers together. Over time, I developed a sense for what “normal” traffic looks like, making it easier to spot anomalies.</p>
+                <p>On the security side, I explored web application firewalls, rate limiting, and HTTP headers, sometimes breaking things, sometimes learning from false positives. Each mistake forced me to dig deeper and understand what was really happening, not just what I assumed.</p>
+                <p>All of this ties back to foundational knowledge for certifications, especially around protocols like TLS and where encryption fits in the stack. It’s one thing to memorize the layers, but another to see how data moves, gets encrypted, and is broken into packets for transmission.</p>
+                <p>This journey has been about building intuition, not just memorizing acronyms. There have been plenty of wrong turns and misconfigurations, but each one brought me closer to understanding how systems behave in the real world. Curiosity and persistence have been my best tools, albeit, sometimes in short supply.</p>
+            </article>
+
+            <aside class="card project-detail-block">
+                <h2>Lab Focus</h2>
+                <ul class="project-meta-list">
+                    <li><strong>Role:</strong> Security Student / Home Lab Builder</li>
+                    <li><strong>Type:</strong> Hands-On Networking & Security</li>
+                    <li><strong>Stack:</strong> Routers, Firewalls, Wireshark, CLI Tools</li>
+                    <li><strong>Theme:</strong> Network Segmentation, OSI Model, Packet Analysis</li>
+                    <li><strong>Status:</strong> Ongoing Experimentation</li>
+                </ul>
+
+                <h2>Key Skills & Takeaways</h2>
+                <div class="chip-row">
+                    <span class="chip">Network Segmentation</span>
+                    <span class="chip">OSI Model Diagnostics</span>
+                    <span class="chip">Packet Analysis</span>
+                    <span class="chip">Firewall Tuning</span>
+                    <span class="chip">Security Intuition</span>
+                </div>
+            </aside>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p class="footer-note">© 2026 | Dashboard shipped, ego patched, logs retained.</p>
+        <a class="social-link" href="https://www.linkedin.com/in/paul-cyber/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M8.34 17V10.67H6.26V17H8.34M7.3 9.79A1.2 1.2 0 1 0 7.3 7.39A1.2 1.2 0 0 0 7.3 9.79M17.74 17V13.56C17.74 11.73 16.76 10.46 14.87 10.46C13.96 10.46 13.35 10.96 13.1 11.44V10.67H11.11V17H13.2V13.86C13.2 13.03 13.36 12.23 14.39 12.23C15.41 12.23 15.43 13.18 15.43 13.91V17H17.74Z" />
+            </svg>
+            LinkedIn
+        </a>
+    </footer>
+</body>
+</html>

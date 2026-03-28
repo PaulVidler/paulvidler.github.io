@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threat Lab</title>
+    <link rel="icon" type="image/x-icon" href="images/miso_ciso.ico">
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            background: #090b10;
+            color: #d8ffe9;
+            font-family: 'JetBrains Mono', monospace;
+            background-image:
+                radial-gradient(circle at 20% 20%, rgba(0, 255, 170, 0.08), transparent 40%),
+                linear-gradient(rgba(74, 222, 128, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(74, 222, 128, 0.05) 1px, transparent 1px);
+            background-size: auto, 22px 22px, 22px 22px;
+        }
+
+        .terminal {
+            width: min(760px, 92vw);
+            border: 1px solid rgba(74, 222, 128, 0.45);
+            background: rgba(8, 14, 12, 0.88);
+            box-shadow: 0 0 24px rgba(74, 222, 128, 0.16);
+            padding: 20px;
+        }
+
+        .title {
+            color: #4ade80;
+            margin: 0 0 16px;
+            letter-spacing: 1px;
+            font-size: 1rem;
+        }
+
+        .line {
+            margin: 8px 0;
+            color: #b7f6cf;
+            font-size: 0.92rem;
+        }
+
+        .flag {
+            margin-top: 14px;
+            padding: 10px;
+            border: 1px dashed rgba(74, 222, 128, 0.5);
+            color: #ecfff5;
+        }
+
+        .hint {
+            margin-top: 12px;
+            color: #8ee9b4;
+            font-size: 0.82rem;
+        }
+
+        .challenge {
+            margin-top: 16px;
+            border: 1px solid rgba(74, 222, 128, 0.35);
+            background: rgba(10, 18, 14, 0.75);
+            padding: 12px;
+        }
+
+        .challenge-title {
+            margin: 0 0 10px;
+            color: #a7f3d0;
+            font-size: 0.9rem;
+        }
+
+        .encoded {
+            margin: 0 0 10px;
+            color: #d8ffe9;
+            font-size: 0.86rem;
+            word-break: break-all;
+        }
+
+        .challenge-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+
+        input[type="text"] {
+            background: #08120d;
+            color: #d8ffe9;
+            border: 1px solid rgba(74, 222, 128, 0.45);
+            padding: 8px 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.84rem;
+            min-width: 240px;
+        }
+
+        button {
+            background: #113322;
+            color: #d8ffe9;
+            border: 1px solid rgba(74, 222, 128, 0.45);
+            padding: 8px 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #16482f;
+        }
+
+        .challenge-output {
+            margin-top: 10px;
+            font-size: 0.82rem;
+            color: #a7f3d0;
+            min-height: 20px;
+        }
+
+        a {
+            color: #4ade80;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <section class="terminal">
+        <h1 class="title">[ THREAT_LAB // UNLISTED NODE ]</h1>
+        <p class="line">Welcome, analyst. You found the hidden route.</p>
+        <p class="line">Mission objective: prove curiosity beats copy/paste security.</p>
+        <p class="line">Fun flag: <strong>flag{curiosity_is_a_security_control}</strong></p>
+        <div class="flag">Bonus: In the main page source, look for where input sequence detection happens and tweak it to your own call sign.</div>
+        <div class="challenge">
+            <h2 class="challenge-title">Mini Challenge #2 // Decode & Verify</h2>
+            <p class="encoded" id="encodedHint">Y3RmX2NhbGxzaWduX2h1bnRlcl9tb2Rl</p>
+            <div class="challenge-controls">
+                <button id="decodeBtn" type="button">Decode Base64 Hint</button>
+                <input id="flagInput" type="text" placeholder="Enter decoded phrase" autocomplete="off">
+                <button id="verifyBtn" type="button">Verify</button>
+            </div>
+            <p class="challenge-output" id="challengeOutput"></p>
+        </div>
+        <p class="hint">Tip: Add your own mini challenge here (e.g., decode base64, Caesar cipher, or fake incident timeline).</p>
+        <p class="hint"><a href="index.html">Return to dashboard</a></p>
+    </section>
+
+    <script>
+        (() => {
+            const encoded = document.getElementById('encodedHint');
+            const decodeBtn = document.getElementById('decodeBtn');
+            const verifyBtn = document.getElementById('verifyBtn');
+            const flagInput = document.getElementById('flagInput');
+            const output = document.getElementById('challengeOutput');
+            const expected = 'ctf_callsign_hunter_mode';
+
+            if (decodeBtn && encoded && output) {
+                decodeBtn.addEventListener('click', () => {
+                    const decoded = atob(encoded.textContent.trim());
+                    output.textContent = `Decoded hint: ${decoded}`;
+                });
+            }
+
+            if (verifyBtn && flagInput && output) {
+                verifyBtn.addEventListener('click', () => {
+                    const attempt = flagInput.value.trim().toLowerCase();
+
+                    if (attempt === expected) {
+                        output.textContent = '✅ Nice find. Bonus flag: flag{source_hunter_lvl2}';
+                        return;
+                    }
+
+                    output.textContent = '❌ Not quite. Decode first, then match exact phrase.';
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
