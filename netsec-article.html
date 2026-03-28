@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Our Network Security Team Sees When We Deploy Software | CYBER-seCURIOSITY</title>
+    <meta name="description" content="How software changes impact network security: what the NetSec team sees, why it matters, and how to communicate changes in a modern enterprise. Covers microservices, zero trust, least privilege, observability, and more.">
+    <meta name="keywords" content="network security, software deployment, microservices, zero trust, least privilege, observability, telemetry, API, HTTP clients, outbound traffic, incident response, companyName, enterprise security, workflow engine, traffic patterns, blast radius, privilege, WAF, firewall, C#, .NET, F5, article, developer communication">
+    <link rel="icon" type="image/x-icon" href="images/miso_ciso.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/miso-square-web.png" alt="Logo" class="logo-img">
+            CYBER-seCURIOSITY
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="projects.html" class="active">Projects</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="card page-hero">
+            <h1>When should the Network Security team know when you made software changes?</h1>
+            <p>I wrote an internal article for the Network Security team to try and help communicate the issues surrounding software changes and their potential impact for the network security team in an enterprise environment running multiple applications on the public-facing web.</p>
+            </br>
+            <a class="button-link" href="projects.html">← Back to Projects</a>
+        </section>
+
+        <section class="project-template-layout">
+            <article class="card project-detail-block">
+                <img class="project-thumb" src="images/miso-netsec-reporter-web.png" alt="Network security article image">
+                <h2>What Our Network Security Team Sees When We Deploy Software</h2></br>
+                <div class="article-body" style="max-width: 800px; margin: 0 auto; line-height: 1.7; font-size: 1.13em;">
+                    
+                    <p>(Through the lens of <em>**InternalSoftwarePackage**</em>-based services and our existing security infrastructure)</p>
+                    <p>Many of our services are built on <em>**InternalSoftwarePackage**</em>: a microservice chassis that gives us consistent identity, telemetry, health checks, HTTP clients, and secure-by-default configuration out of the box, and a huge advantage. It means:</p>
+                    
+                    <ul>
+                        <li>Authentication is standardized</li>
+                        <li>Telemetry is consistent</li>
+                        <li>HTTP traffic is observable</li>
+                        <li>Configuration follows predictable patterns, enabling baseline security standards to be enforced, audited and maintained at scale.</li>
+                    </ul>
+                    
+                    <p>But even with a strong security baseline, deploying software may change network dependencies, traffic paths, payload sizes or trust boundaries, and these changes can change what the network security infrastructure can see; sometimes in ways that aren’t immediately obvious from code reviews or build pipelines.</p>
+                    <p>This article looks at what changes in network traffic and service-to-service communication when a <em>**InternalSoftwarePackage**</em>-based service evolves, and why those changes matter to our Network Security Team.</p>
+                    </br>
+                    <h2><em>**InternalSoftwarePackage**</em> Gives Consistency: But Behaviour Still Changes</h2>
+                    
+                    <p>From a developer’s point of view, many changes feel somewhat inconsequential, including:</p>
+                    
+                    <ul>
+                        <li>Adding a new workflow step in Screen Driver</li>
+                        <li>Introducing a new downstream service or API dependency</li> 
+                        <li>Registering another named HttpClient</li>
+                        <li>Enabling Redis output caching</li>
+                        <li>Adding Cosmos DB support to a worker</li>
+                        <li>Turning on outbound auth for a service-to-service call</li>
+                    </ul>
+                    
+                    <p>From a network perspective, those changes often translate into new traffic patterns, even if everything still follows <em>**InternalSoftwarePackage**</em> conventions.</p>
+                    
+                    <p>Network tools don’t know we used:</p>
+                    <code>builder.Add<em>**InternalSoftwarePackage**</em>HttpClient("ExternalApi");</br></code></br>
+                    
+                    <p>They only see:</p>
+                    
+                    <ul>
+                        <li>A service that never made outbound calls before, is now doing so</li>
+                        <li>Calls going to a new destination</li>
+                        <li>Tokens being requested and attached</li>
+                        <li>Payload sizes or request frequencies changing</li>
+                    </ul>
+                    </br>
+                    <h2>Example: Adding a New Integration in a “Standard” Way</h2>
+                    
+                    <p>Let’s say we add a new external service, called from a Screen Driver task in DCQ as follows:</p>
+                    
+                    <ul>
+                        <li>Registered via <em>**InternalSoftwarePackage**</em>:HttpClients</li>
+                        <li>Uses client credentials</li>
+                        <li>Fully instrumented with OpenTelemetry</li>
+                        <li>Health-checked and cached</li>
+                    </ul>
+                    
+                    <p>From the application side, this is textbook <em>**InternalSoftwarePackage**</em> usage.</p>
+                    <p>From Network Security’s side, this appears as:</p>
+                    
+                    <ul>
+                        <li>A new outbound dependency</li>
+                        <li>A new TLS session profile</li>
+                        <li>A new authentication flow (token acquisition + API calls)</li>
+                        <li>A new steady traffic pattern originating from the DCQ API</li>
+                    </ul>
+                    
+                    <p>This expands the new DCQ service’s blast radius and threat model:</p>
+                    
+                    <ul>
+                        <li>If compromised, it can now talk to something it couldn’t before</li>
+                        <li>Introduces the potential for lateral movement within the network</li>
+                        <li>If misconfigured, there is potential for data leakage</li>
+                        <li>If the third party misbehaves, it affects internal stability</li>
+                    </ul>
+                    
+                    <p>None of this means the change is wrong; it just means the risk profile has changed, and the Security team may need to know about it in order to maintain proper oversight and maximise application availability.</p>
+                    </br>
+                    <h2>Zero Trust Shows Up as “Questions”, Not Blocks</h2>
+                    
+                    <p>In a zero-trust environment, Network Security assumes:</p>
+                    <blockquote><em>“Every service is trusted only to do exactly what it needs to do, and nothing more.”</em></blockquote>
+                    <p><em>**InternalSoftwarePackage**</em> helps enforce that by:</p>
+                    
+                    <ul>
+                        <li>Centralizing identity</li>
+                        <li>Standardizing auth flows</li>
+                        <li>Making outbound calls explicit via registered HttpClients, so Network Security can anticipate expected traffic and enforce access controls</li>
+                    </ul>
+                    
+                    <p>But when new integrations are added, security systems will naturally ask:</p>
+                    
+                    <ul>
+                        <li>Why is this service talking externally now?</li>
+                        <li>Is this expected traffic volume?</li>
+                        <li>Is this dependency required in all environments?</li>
+                        <li>What happens if the token scope is abused?</li>
+                    </ul>
+                    
+                    <p>If those answers aren’t visible ahead of time, the response is often reactive:</p>
+                   
+                    <ul>
+                        <li>Alerts</li>
+                        <li>Temporary blocks</li>
+                        <li>Manual rule adjustments</li>
+                    </ul>
+                    
+                    <p>A small heads-up turns those into intentional allowances instead.</p>
+                    </br>
+                    <h2>Least Privilege Applies to Connectivity Too</h2>
+                    
+                    <p>we are already good at least privilege in code:</p>
+                    
+                    <ul>
+                        <li>Scoped DI</li>
+                        <li>Narrow interfaces</li>
+                        <li>Explicit options binding</li>
+                        <li>Strong validation</li>
+                    </ul>
+                    
+                    <p>The network equivalent is:</p>
+                    
+                    <ul>
+                        <li>Only the services that need connectivity have it</li>
+                        <li>Only to the destinations they require</li>
+                        <li>Only using the protocols and payloads they expect</li>
+                    </ul>
+                    
+                    <p>When a <em>**InternalSoftwarePackage**</em> service registers a new HTTP client, enables outbound authentication, adds Redis or Cosmos dependencies, or introduces a worker that runs continuously instead of on demand, it is effectively requesting more network privilege, even if no firewall rules were touched directly. Making these changes visible ensures that those privileges remain intentional and tightly controlled.</p>
+                    </br>
+                    <h2>BFFs and Workflow Engines Change Traffic Shapes</h2>
+                    
+                    <p>The Screen Driver architectures can be especially interesting from a network perspective.</p>
+                    
+                    <ul>
+                        <li>A single user journey can generate:</li>
+                            <ul>
+                                <li>Many short-lived API calls</li>
+                                <li>Step transitions with bursty traffic</li>
+                                <li>Background tasks firing during state transitions</li>
+                                <li>Calls to multiple internal and external services</li>
+                                <li>That’s normal for a workflow engine, but it also means:</li>
+                                <li>Traffic volume can spike without user count changing</li>
+                                <li>Payloads can grow as flow state evolves</li>
+                                <li>Retry behaviour can amplify failures</li>
+                                <li>When a new step or task is introduced, Network Security may see:</li>
+                                <li>Sudden changes in request rate</li>
+                                <li>New call chains</li>
+                                <li>New downstream dependencies</li>
+                                <li>Sharing why that happens helps distinguish expected behaviour from actual abuse or failure.</li>
+                            </ul>
+                    </ul>
+                    </br>
+                    <h2>Observability Helps; But Only If Behaviour Is Understood</h2>
+                    
+                    <p><em>**InternalSoftwarePackage**</em> provides us with out-of-the-box distributed traces, metrics, correlation ID’s and structured logs, and this telemetry is invaluable to Network Security in an incident response, but only if the team know and understand which services and dependencies are involved and what is actually “normal and expected” traffic. Without that context, telemetry only tells part of the story.</p>
+                    
+                    <h2>The Practical Takeaway</h2>
+                    
+                    <p><em>**InternalSoftwarePackage**</em> reduces developer complexity and handles common setup and security concerns, but service changes still affect network behaviour and visibility.</p>
+                    <p>Any time a service:</p>
+                    
+                    <ul>
+                        <li>Gains a new dependency</li>
+                        <li>Changes how often it runs</li>
+                        <li>Changes data size, shape or request volume</li>
+                        <li>Changes its authentication behaviour</li>
+                    </ul>
+                    
+                    <p>…it changes what Network Security sees and protects.</p>
+                    </br>
+                    <h2>When should we consider notifying Network Security?</h2>
+                    
+                    <ul>
+                        <li>New outbound integrations (internal or external)</li>
+                        <li>New workers or scheduled processes</li>
+                        <li>Significant workflow or traffic-shape changes</li>
+                        <li>Auth or token scope changes</li>
+                        <li>New data stores or caches that affect traffic patterns</li>
+                    </ul>
+                    
+                    <p>This article shows how deploying or updating <em>**InternalSoftwarePackage**</em>-based services changes both north-south (external) and east-west (internal) traffic. Even standard changes, like adding HTTP clients, enabling Redis caching, or turning on outbound authentication all alter these traffic patterns. Understanding these shifts helps developers notify Network Security of new dependencies, data flows, and authentication paths, supporting least-privilege policies, reducing potential blast radius, and enabling faster, more accurate incident response.</p>
+                
+                </div>
+            </article>
+
+            <aside class="card project-detail-block">
+                
+                <h2>Project Metadata</h2>
+                
+                <ul class="project-meta-list">
+                    <li><strong>Role:</strong> Software developer helping out the NetSec team</li>
+                    <li><strong>Type:</strong> WAF - Firewall - API changes</li>
+                    <li><strong>Stack:</strong> C#, .NET, F5</li>
+                    <li><strong>Focus:</strong> An article to try and communicate the impact of software changes on network security</li>
+                    <li><strong>Status:</strong> Active</li>
+                </ul>
+
+                <h2>Timeline</h2>
+                
+                <ul class="timeline">
+                    <li>Idea & Automation: Automated legacy workflows, parsed and indexed years of flight, LiDAR and photogrammetry data</li>
+                    <li>Platform Build: Developed web mapping and data visualization tools</li>
+                    <li>Legal action threatened over personal open sourced code</li>
+                    <li>Open Source & Handover: Released code, transitioned project, and exited company</li>
+                </ul>
+
+                <h2>Key Skills Demonstrated</h2>
+                
+                <div class="chip-row">
+                    <span class="chip">.NET & Azure</span>
+                    <span class="chip">Problem Solving</span>
+                    <span class="chip">Report Writing</span>
+                    <span class="chip">Network Security</span>
+                    <span class="chip">Security Communication</span>
+                    <span class="chip">Incident Response</span>
+                    <span class="chip">Zero Trust</span>
+                    <span class="chip">WAF rules</span>
+                    <span class="chip">Least Privilege</span>
+                    <span class="chip">Firewall rules</span>
+                </div>
+            </aside>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p class="footer-note">© 2026 | If you found this page by accident, that still counts as recon.</p>
+        <a class="social-link" href="https://www.linkedin.com/in/paul-cyber/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M8.34 17V10.67H6.26V17H8.34M7.3 9.79A1.2 1.2 0 1 0 7.3 7.39A1.2 1.2 0 0 0 7.3 9.79M17.74 17V13.56C17.74 11.73 16.76 10.46 14.87 10.46C13.96 10.46 13.35 10.96 13.1 11.44V10.67H11.11V17H13.2V13.86C13.2 13.03 13.36 12.23 14.39 12.23C15.41 12.23 15.43 13.18 15.43 13.91V17H17.74Z" />
+            </svg>
+            LinkedIn
+        </a>
+    </footer>
+</body>
+</html>
