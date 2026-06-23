@@ -54,7 +54,7 @@
                     <p>From a developer’s point of view, many changes feel somewhat inconsequential, including:</p>
                     
                     <ul>
-                        <li>Adding a new workflow step in Screen Driver</li>
+                        <li>Adding a new workflow step in the UI Framework</li>
                         <li>Introducing a new downstream service or API dependency</li> 
                         <li>Registering another named HttpClient</li>
                         <li>Enabling Redis output caching</li>
@@ -78,7 +78,7 @@
                     </br>
                     <h2>Example: Adding a New Integration in a “Standard” Way</h2>
                     
-                    <p>Let’s say we add a new external service, called from a Screen Driver task in DCQ as follows:</p>
+                    <p>Let’s say we add a new external service, called from a frontend task in our application as follows:</p>
                     
                     <ul>
                         <li>Registered via <em>**InternalSoftwarePackage**</em>:HttpClients</li>
@@ -94,10 +94,10 @@
                         <li>A new outbound dependency</li>
                         <li>A new TLS session profile</li>
                         <li>A new authentication flow (token acquisition + API calls)</li>
-                        <li>A new steady traffic pattern originating from the DCQ API</li>
+                        <li>A new steady traffic pattern originating from the application API</li>
                     </ul>
                     
-                    <p>This expands the new DCQ service’s blast radius and threat model:</p>
+                    <p>This expands the new application service’s blast radius and threat model:</p>
                     
                     <ul>
                         <li>If compromised, it can now talk to something it couldn’t before</li>
@@ -162,7 +162,7 @@
                     </br>
                     <h2>BFFs and Workflow Engines Change Traffic Shapes</h2>
                     
-                    <p>The Screen Driver architectures can be especially interesting from a network perspective.</p>
+                    <p>The UI framework architectures can be especially interesting from a network perspective.</p>
                     
                     <ul>
                         <li>A single user journey can generate:</li>
@@ -228,14 +228,14 @@
                     <li><strong>Status:</strong> Active</li>
                 </ul>
 
-                <h2>Timeline</h2>
+                <!-- <h2>Timeline</h2> -->
                 
-                <ul class="timeline">
+                <!-- <ul class="timeline">
                     <li>Idea & Automation: Automated legacy workflows, parsed and indexed years of flight, LiDAR and photogrammetry data</li>
                     <li>Platform Build: Developed web mapping and data visualization tools</li>
                     <li>Legal action threatened over personal open sourced code</li>
                     <li>Open Source & Handover: Released code, transitioned project, and exited company</li>
-                </ul>
+                </ul> -->
 
                 <h2>Key Skills Demonstrated</h2>
                 
