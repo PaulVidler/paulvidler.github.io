@@ -273,9 +273,9 @@ h1.page-title {
 .health-bar-circle.flashing { animation: flash-green 1s infinite; }
 .health-bar-square.darkgreen.flashing { animation: flash-darkgreen 1s infinite; }
 
-.health-bar > :last-child.flashing {
+/* .health-bar > :last-child.flashing {
     animation: none;
-}
+} */
 
 @keyframes flash-red {
     0%, 100% { background-color: #ff4d4d; }
